@@ -88,6 +88,8 @@ dst = np.float32([(450,0),
                   (image.shape[1]-450,0),
                   (450,image.shape[0]),
                   (image.shape[1]-450,image.shape[0])])
+
+
 | Source        | Destination   | 
 |:-------------:|:-------------:| 
 | 576, 478      | 450, 0        | 
