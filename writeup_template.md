@@ -103,14 +103,19 @@ I verified that my perspective transform was working as expected by drawing the 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+I first took a histogram along all the columns in the lower half of the image where the two most prominent peaks will be good indicators of the x-position of the base of the lane lines. 
+Further on I used that as a starting point for where to search the lines. From that point, I used a sliding window, placed around the line centers, to find and follow the lines up to the top of the frame.
+Afterwards I fit my lane lines with a 2nd order polynomial kinda like this:
 
 ![alt text][image3]
 ![alt text][image4]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in the 13th code cell of the IPython notebook.  
+I did this in the 13th code cell of the IPython notebook. 
+First I defined conversions in x and y from pixels space to meters (ym_per_pix = 25/720, xm_per_pix = 3.7/335)
+Further on I identified the x and y positions of all nonzero pixels in the image, while extracting the left and right lane pixel positions. 
+Then I fit the polynomials and calculated the radius of curvature. For calculating the position of the vehicle with respect to center I subtracted the mean value of the left and right fit intercepts from the image weight median
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
