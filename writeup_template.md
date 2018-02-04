@@ -19,17 +19,17 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/UndistortedIMG.jpeg "Undistorted"
-[image2]: ./examples/UndistortedWarpedIMG.jpeg "Undistorted and Warped Image"
-[image3]: ./examples/SlidingWindow.jpeg "Sliding Window"
-[image4]: ./examples/SlidingWindowPreviousFit.jpeg "Sliding Window using previous fit"
-[image5]: ./examples/LaneAreaDrawn.jpeg "Fit Visual"
-[image6]: ./examples/ThresholdedBchannel.jpeg "Thresholded B channel"
-[image7]: ./examples/ThresholdedBchannel.jpeg "Thresholded L channel"
-[image8]: ./test_images/UndistortedTestIMG.jpeg "Undistorted Image"
-[image9]: ./examples/CombinedSchannel_GradientThreshold.jpeg "Gradient and S Channel Threshold"
-[video1]: ./examples/project_video_output_final.mp4 "Video"
-[video2]: ./examples/challenge_video_output_final.mp4 "Video Challenge"
+[image1]: ./output_images/UndistortedIMG.jpeg "Undistorted"
+[image2]: ./output_images/UndistortedWarpedIMG.jpeg "Undistorted and Warped Image"
+[image3]: ./output_images/SlidingWindow.jpeg "Sliding Window"
+[image4]: ./output_images/SlidingWindowPreviousFit.jpeg "Sliding Window using previous fit"
+[image5]: ./output_images/LaneAreaDrawn.jpeg "Fit Visual"
+[image6]: ./output_images/ThresholdedBchannel.jpeg "Thresholded B channel"
+[image7]: ./output_images/ThresholdedBchannel.jpeg "Thresholded L channel"
+[image8]: ./output_images/UndistortedTestIMG.jpeg "Undistorted Image"
+[image9]: ./output_images/CombinedSchannel_GradientThreshold.jpeg "Gradient and S Channel Threshold"
+[video1]: ./output_images/project_video_output_final.mp4 "Video"
+[video2]: ./output_images/challenge_video_output_final.mp4 "Video Challenge"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
