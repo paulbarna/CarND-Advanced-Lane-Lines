@@ -25,7 +25,7 @@ The goals / steps of this project are the following:
 [image4]: ./output_images/SlidingWindowPreviousFit.jpeg "Sliding Window using previous fit"
 [image5]: ./output_images/LaneAreaDrawn.jpeg "Fit Visual"
 [image6]: ./output_images/ThresholdedBchannel.jpeg "Thresholded B channel"
-[image7]: ./output_images/ThresholdedBchannel.jpeg "Thresholded L channel"
+[image7]: ./output_images/ThresholdedLchannel.jpeg "Thresholded L channel"
 [image8]: ./output_images/UndistortedTestIMG.jpeg "Undistorted Image"
 [image9]: ./output_images/CombinedSchannel_GradientThreshold.jpeg "Gradient and S Channel Threshold"
 [video1]: ./output_images/project_video_output_final.mp4 "Video"
@@ -79,12 +79,12 @@ The code for my perspective transform includes a function called `corners_unwarp
 
 The source was manually adjusted for each video in order to obtain better accuracy when fitting the polynomial.
 
-testSrc = np.float32([(576,478),
+drc = np.float32([(576,478),
                   (754,478), 
                   (311,657), 
                   (1048,657)])
 
-				  testDst = np.float32([(450,0),
+dst = np.float32([(450,0),
                   (image.shape[1]-450,0),
                   (450,image.shape[0]),
                   (image.shape[1]-450,image.shape[0])])
@@ -122,8 +122,10 @@ I implemented this step in the 14th code cell of the IPython notebook in the fun
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-![alt text][video1]
-![alt text][video2]
+
+Here's a [link to my project_video result](./output_images/project_video_output_final.mp4)
+Here's a [link to my challenge_video result](./output_images/challenge_video_output_final.mp4)
+
 
 ---
 
@@ -131,11 +133,11 @@ I implemented this step in the 14th code cell of the IPython notebook in the fun
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-The techniques I used were mainly described within the lecture. The one step which proved to be critical for generating the binary image, are the combined Lab And Luv color space thresholds.(b and l channels)
+The techniques I used were mainly described within the lecture. The one step which proved to be critical for generating the binary image, are the combined Lab And Luv color space thresholds(b and l channels).
 It proved to be particularly tricky to get the thresholds right as well.
 I chose to hardcode the src and dst points for the perspective transform, by manually obtaining the src points based on the first frame lanes position.
 However this is an aspect where I can improve by automatically updating the src and dst points each frame. This could improve the performance of the lane detection for the harder challenge video.
 For measuring the curvature I used the lecture example while for calculating the position of the vehicle with respect to center I subtracted the mean value of the left and right fit intercepts from the image weight median.
-In terms of processing the tracking analysis I mainly used the provided line class where I checked each frame fit against the best fit, while storing the last 5 fits for both the and right lanes. 
-I also dropped the frame fit if lane is not detected, just to make sure the buffer average is not affected. Additionally I included a check where out of range intercepts at the bottom of the image would discard the fits as well.
-Also and adaptive buffer storing functionality would provide better performance for the wobbly roads while an online src points calculation would improve the polynomial fit as well.
+In terms of buffering the tracking statistics I used a line class where I checked each frame fit against the best fit, while storing the last 5 fits for both the left and right lanes. 
+I also dropped the frame fit if the lane is not detected, just to make sure the buffer average is not affected. Additionally I included a check where out of range intercepts at the bottom of the image would discard the fits as well.
+Also an adaptive buffer storing functionality would provide better performance for the wobbly roads while an online src points calculation would improve the polynomial fit as well.
